@@ -1,0 +1,29 @@
+#include<queue>
+bool isMaxHeap(int arr[], int n) {
+    if(n==0 || n==1){
+        return true;
+    }
+    priority_queue<int> pq;
+    for(int i=0 ;i<n ; i++){
+       pq.push(arr[i]);
+    }
+   // int j=0;
+  //  int max = arr[j];
+    for(int j=0;j<n ;j++){
+      int max = arr[j];
+      if ((2 * j + 1) < n && max < arr[2 * j + 1]) {
+        return false;
+      }
+
+        if ((2 * j + 2) < n && max < arr[2 * j + 2]) {
+          return false;
+          
+        }
+        
+      }
+      
+          return true;
+        //pq.pop();
+       // j++;
+    }
+    
