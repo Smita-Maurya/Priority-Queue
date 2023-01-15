@@ -1,0 +1,33 @@
+#include<queue>
+#include<stack>
+vector<int> kSmallest(int arr[], int n, int k) {
+  
+  //vector<int>* ans = new vector<int>();
+  priority_queue<int> pq;
+  stack<int> q;
+  int i=0;
+  for (; i < k; i++) {
+      pq.push(arr[i]); 
+    }
+    for(int i=k ; i<n ; i++){
+      int max = pq.top();
+      if(max> arr[i]){
+        pq.pop();
+        pq.push(arr[i]);
+      }
+    }
+    while(!pq.empty()){
+      pq.top();
+    // cout<<arr[i]<<" ";
+     q.push(pq.top());
+     pq.pop();
+     // cout << arr[i] << " ";
+    }
+    while(!q.empty()){
+     arr[i]= q.top();
+     cout<<arr[i]<<" ";
+     q.pop();
+
+    }
+     
+}
