@@ -1,0 +1,19 @@
+#include<queue>
+
+vector<int> kLargest(int input[], int n, int k){
+    priority_queue<int> pq;
+   // stack<int> q;
+   vector<int >v;
+
+   for (int i = 0; i < n; i++) {
+     pq.push(input[i]);
+   }
+   int j=0;
+   while(j<k){
+       v.push_back(pq.top());
+       pq.pop();
+       j++;
+   }
+   return v;
+   
+}
