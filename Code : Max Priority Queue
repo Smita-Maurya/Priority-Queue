@@ -1,0 +1,85 @@
+#include<vector>
+class PriorityQueue {
+    vector<int> pq;
+    // Declare the data members here
+
+   public:
+    PriorityQueue() {
+        // Implement the constructor here
+    }
+
+    /**************** Implement all the public functions here ***************/
+
+    void insert(int element) {
+        pq.push_back(element);
+        int childindex =pq.size()-1;
+        while(childindex>0){
+            int parentindex =(childindex-1)/2;
+            if(pq[childindex]> pq[parentindex]){
+                int temp = pq[childindex];
+                pq[childindex]=pq[parentindex];
+                pq[parentindex]= temp;
+            }
+            childindex=parentindex;
+        }
+        // Implement the insert() function here
+    }
+
+    int getMax() {
+        return pq[0];
+        // Implement the getMax() function here
+    }
+
+    int removeMax() {
+        if(isEmpty()){
+            return 0;
+        }
+        int ans =pq[0];
+        pq[0]= pq[pq.size()-1];
+        pq.pop_back();
+        int parentindex=0;
+        int leftchildindex=2*parentindex+1;
+        int rightchildindex = 2*parentindex +2;
+        while(leftchildindex<pq.size()){
+            int minindex = parentindex;
+            if(pq[minindex]<pq[leftchildindex]){
+                minindex = leftchildindex;
+            }
+            if(rightchildindex < pq.size() && pq[minindex] <pq[rightchildindex] ){
+                minindex = rightchildindex ;
+
+            }
+            if(minindex == parentindex){
+                break;
+            }
+            int temp = pq[minindex];
+            pq[minindex]= pq[parentindex];
+            pq[parentindex]=temp;
+
+            parentindex = minindex ;
+            leftchildindex = 2*parentindex +1;
+            rightchildindex = 2*parentindex +2;
+        }
+        return ans;
+        // Implement the removeMax() function here
+    }
+
+    int getSize() { 
+        if(isEmpty()){
+            return 0;
+        }
+        return pq.size();
+        // Implement the getSize() function here
+    }
+
+    bool isEmpty() {
+        if(pq.size()==0){
+            return true;
+        }
+        else{
+            return false;
+        }
+
+        // Implement the isEmpty() function here
+    }
+};
