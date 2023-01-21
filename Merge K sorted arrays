@@ -1,0 +1,24 @@
+#include<vector>
+#include<queue>
+#include<bits/stdc++.h>
+vector<int> mergeKSortedArrays(vector<vector<int>*> input) {
+vector<int> output;
+ 
+priority_queue<int , vector<int> , greater<int>> p;
+for(int i=0;i<input.size() ;i++){
+    for(int j=0; j<input[i]->size(); j++)
+        p.push(input[i]->at(j));
+}
+
+ 
+    while(!p.empty()) {
+        output.push_back(p.top());
+    // }
+    // else{
+        p.pop();
+    // }
+    }
+
+    return output;
+    
+}
