@@ -1,0 +1,32 @@
+#include<queue>
+#include<bits/stdc++.h>
+int buyTicket(int *arr, int n, int k) {
+    // deque<int> dq;
+    queue<int>dq;
+    priority_queue<int> pq;
+    for(int i=0;i<n;i++){
+        dq.push(i);
+        pq.push(arr[i]);
+    }
+    int time=0;
+        while (!dq.empty()){
+        if(arr[dq.front()] == pq.top()){
+            int index = dq.front();
+            dq.pop();
+            pq.pop();
+            time++;
+            if (index == k){
+                break;
+            }
+        }
+        else{
+            int x = dq.front();
+            dq.pop();
+            dq.push(x);
+        }
+    }
+    return time;
+     
+    
+     
+}
